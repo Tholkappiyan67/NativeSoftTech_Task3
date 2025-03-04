@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Forest Fire Prediction</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/materialize.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{{ url_for('static', filename='css2/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+
+<body>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">Forest Fire Prevention</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">Predict the probability of Forest-Fire Occurrence</h5>
+      </div>
+
+      <div class="row">
+        <form action="{{ url_for('predict') }}" method="post" class="col s12">
+          <div class="row">
+            <div class="input-field col s4">
+                <label for="temperature"><b>Temperature</b></label>
+                <br>
+              <input placeholder="Temperature in Celsius" name="Temperature" id="temperature" type="text" class="validate">
+            </div>
+            <div class="input-field col s4">
+              <label for="oxygen"><b>Oxygen </b></label>
+              <br>
+              <input id="oxygen" name="Oxygen" placeholder="Oxygen content in ppm" type="text" class="validate">
+            </div>
+            <div class="input-field col s4">
+                <label for="humidity"><b>Humidity</b></label>
+                <br>
+              <input id="humidity" name="Humidity" placeholder="Humidity %" type="text" class="validate">
+            </div>
+          </div>
+
+          <div class="row center">
+              <button type="submit" class="btn-large waves-effect waves-light orange">Predict Probability</button>
+          </div>
+        </form>
+      </div>
+
+      <br>
+      <h4 class="center red-text">{{ prediction_text }}</h4>
+      <br>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{{ url_for('static', filename='js/materialize.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/init.js') }}"></script>
+</body>
+</html>
